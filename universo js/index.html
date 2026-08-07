@@ -1,0 +1,146 @@
+HTML
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mi Universo Contigo">
+    <title>💖 Mi Universo Contigo 💖</title>
+    
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Hoja de Estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- PANTALLA DE BIENVENIDA -->
+    <section id="intro">
+        <div class="intro-overlay"></div>
+        <div class="intro-content">
+            <h1 class="title">✨ Mi Universo Contigo ✨</h1>
+            <p class="description">
+                Bienvenida...<br><br>
+                Hoy quiero invitarte a recorrer un universo creado especialmente para ti.<br>
+                Cada estrella representa un pensamiento.<br>
+                Cada planeta un sueño.<br>
+                Cada carpeta guarda un pedacito de mi corazón.
+            </p>
+            <button id="enterUniverse">❤️ Entrar ❤️</button>
+        </div>
+    </section>
+
+    <!-- MÚSICA DE FONDO (OPCIONAL) -->
+    <audio id="music" loop>
+        <source src="space.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- UNIVERSO PRINCIPAL -->
+    <main id="universe">
+        <!-- Canvas para renderizar estrellas y cometas -->
+        <div id="spaceBackground"></div>
+        <canvas id="spaceCanvas"></canvas>
+
+        <!-- Nebulosas -->
+        <div class="nebula nebula1"></div>
+        <div class="nebula nebula2"></div>
+        <div class="nebula nebula3"></div>
+
+        <!-- Sol y Planetas -->
+        <div id="sun"></div>
+        <div class="planet mercury"></div>
+        <div class="planet venus"></div>
+        <div class="planet earth"></div>
+        <div class="planet mars"></div>
+        <div class="planet jupiter"></div>
+        <div class="planet saturn"><div class="ring"></div></div>
+        <div class="planet uranus"></div>
+        <div class="planet neptune"></div>
+
+        <!-- Capas para Partículas y Efectos -->
+        <div id="particles"></div>
+        <div id="heartParticles"></div>
+        <div id="comets"></div>
+        <div id="shootingStars"></div>
+
+        <!-- CONTENEDOR DE LAS 10 CARPETAS -->
+        <section id="folderContainer">
+            <div class="folder" data-letter="1">
+                <div class="seal">❤️</div>
+                <div class="emoji">🌍</div>
+                <span>Mi Futuro Solo Contigo</span>
+            </div>
+            <div class="folder" data-letter="2">
+                <div class="seal">❤️</div>
+                <div class="emoji">💖</div>
+                <span>Eres Mi Mundo</span>
+            </div>
+            <div class="folder" data-letter="3">
+                <div class="seal">❤️</div>
+                <div class="emoji">🌹</div>
+                <span>Lo Que Siento Por Ti</span>
+            </div>
+            <div class="folder" data-letter="4">
+                <div class="seal">❤️</div>
+                <div class="emoji">💌</div>
+                <span>Una Carta Para Ti</span>
+            </div>
+            <div class="folder" data-letter="5">
+                <div class="seal">❤️</div>
+                <div class="emoji">🌙</div>
+                <span>Nuestros Sueños</span>
+            </div>
+            <div class="folder" data-letter="6">
+                <div class="seal">❤️</div>
+                <div class="emoji">✨</div>
+                <span>Momentos Inolvidables</span>
+            </div>
+            <div class="folder" data-letter="7">
+                <div class="seal">❤️</div>
+                <div class="emoji">🪐</div>
+                <span>Más Allá de las Estrellas</span>
+            </div>
+            <div class="folder" data-letter="8">
+                <div class="seal">❤️</div>
+                <div class="emoji">🔒</div>
+                <span>Mis Secretos Más Dulces</span>
+            </div>
+            <div class="folder" data-letter="9">
+                <div class="seal">❤️</div>
+                <div class="emoji">🌌</div>
+                <span>Un Amor Infinito</span>
+            </div>
+            <div class="folder" data-letter="10" id="finalFolder">
+                <div class="seal">❤️</div>
+                <div class="emoji">🎁</div>
+                <span>El Final de Nuestro Viaje</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- MODAL / CONTENEDOR DE LA CARTA (Abre al presionar una carpeta) -->
+    <div id="letterModal" class="modal hidden">
+        <div class="letter-paper">
+            <button id="closeLetter" class="close-btn">&times;</button>
+            <div class="letter-content">
+                <h2 id="letterTitle"></h2>
+                <p id="letterText" class="typewriter-text"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA Y MENSAJE FINAL (Etapa 6) -->
+    <section id="finalScreen" class="hidden">
+        <div class="final-content">
+            <h1 class="final-title">💖 Mi Universo Contigo 💖</h1>
+            <p class="final-signature">Con todo mi amor, Jesús Alessandro ❤️</p>
+        </div>
+    </section>
+
+    <!-- ARCHIVO JAVASCRIPT -->
+    <script src="script.js"></script>
+</body>
+</html>

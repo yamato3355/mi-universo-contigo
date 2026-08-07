@@ -1,0 +1,344 @@
+/* ==========================================
+   VARIABLES GLOBALES Y RESET
+   ========================================== */
+:root {
+    --bg-dark: #05020a;
+    --pink-pastel: #ffd1dc;
+    --pink-deep: #ff2e63;
+    --pink-glow: rgba(255, 182, 193, 0.6);
+    --gold: #ffe600;
+    --text-color: #ffffff;
+    --font-title: 'Great Vibes', cursive;
+    --font-main: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--bg-dark);
+    font-family: var(--font-main);
+    color: var(--text-color);
+}
+
+/* ==========================================
+   PANTALLA DE BIENVENIDA (INTRO)
+   ========================================== */
+#intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #1a0b2e 0%, #05020a 100%);
+    text-align: center;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.intro-content {
+    max-width: 600px;
+    padding: 20px;
+    z-index: 2;
+}
+
+.title {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    color: var(--pink-pastel);
+    text-shadow: 0 0 15px var(--pink-glow);
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #e0d6f6;
+}
+
+#enterUniverse {
+    background: linear-gradient(45deg, #ff758c, #ff7eb3);
+    border: none;
+    color: white;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 20px var(--pink-glow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#enterUniverse:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(255, 117, 140, 0.9);
+}
+
+/* ==========================================
+   UNIVERSO, CANVAS Y NEBULOSAS
+   ========================================== */
+#universe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#spaceCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Nebulosas flotantes */
+.nebula {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    animation: floatNebula 20s infinite alternate ease-in-out;
+    pointer-events: none;
+}
+
+.nebula1 {
+    width: 500px;
+    height: 500px;
+    background: #6a1b9a;
+    top: -100px;
+    left: -100px;
+}
+
+.nebula2 {
+    width: 600px;
+    height: 600px;
+    background: #ad1457;
+    bottom: -150px;
+    right: -150px;
+}
+
+.nebula3 {
+    width: 400px;
+    height: 400px;
+    background: #283593;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes floatNebula {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.2) translate(30px, -20px); }
+}
+
+/* ==========================================
+   CONTENEDOR Y CARPETAS ROSA PASTEL
+   ========================================== */
+#folderContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 950px;
+    width: 90%;
+    z-index: 10;
+    padding: 20px;
+}
+
+.folder {
+    width: 140px;
+    height: 110px;
+    background: var(--pink-pastel);
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255, 182, 193, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: folderFloat 4s infinite ease-in-out alternate;
+}
+
+/* Animación flotante desfasada para dar sensación de cosmos */
+.folder:nth-child(even) { 
+    animation-delay: 2s; 
+}
+
+.folder:hover {
+    transform: translateY(-10px) scale(1.08);
+    box-shadow: 0 15px 35px var(--pink-glow);
+}
+
+.folder .seal {
+    font-size: 1.3rem;
+    position: absolute;
+    top: -12px;
+    background: white;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.folder .emoji {
+    font-size: 2.2rem;
+    margin-top: 10px;
+}
+
+.folder span {
+    font-size: 0.75rem;
+    color: #4a2c3d;
+    font-weight: 600;
+    text-align: center;
+    padding: 0 5px;
+    margin-top: 5px;
+}
+
+@keyframes folderFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-12px); }
+}
+
+/* ==========================================
+   MODAL DE LA CARTA
+   ========================================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 2, 10, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.letter-paper {
+    background: #fff8fb;
+    width: 90%;
+    max-width: 500px;
+    min-height: 300px;
+    border-radius: 15px;
+    border: 2px solid var(--pink-pastel);
+    padding: 35px 25px;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+    color: #333;
+    animation: openPaper 0.5s ease-out;
+}
+
+@keyframes openPaper {
+    from { transform: scale(0.7) translateY(50px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: var(--pink-deep);
+}
+
+.letter-content h2 {
+    font-family: var(--font-title);
+    color: var(--pink-deep);
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.typewriter-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4a3b4e;
+    white-space: pre-line;
+}
+
+/* ==========================================
+   PANTALLA FINAL (ETAPA 6)
+   ========================================== */
+#finalScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, #2d0b31 0%, #0d021a 100%);
+    z-index: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 2s ease;
+}
+
+#finalScreen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.final-title {
+    font-family: var(--font-title);
+    font-size: 4.5rem;
+    color: var(--pink-deep);
+    text-shadow: 0 0 25px var(--pink-glow), 0 0 50px var(--pink-pastel);
+    margin-bottom: 20px;
+}
+
+.final-signature {
+    font-size: 1.8rem;
+    font-family: var(--font-title);
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   DISEÑO RESPONSIVO (MÓVILES)
+   ========================================== */
+@media (max-width: 600px) {
+    .title { font-size: 2.8rem; }
+    .folder { width: 110px; height: 95px; }
+    .folder .emoji { font-size: 1.8rem; }
+    .folder span { font-size: 0.65rem; }
+    .final-title { font-size: 3rem; }
+}
